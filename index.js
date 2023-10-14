@@ -8,7 +8,7 @@ const { exec } = require('child_process');
 const { WebSocket, createWebSocketStream } = require('ws');
 const logcb = (...args) => console.log.bind(this, ...args);
 const errcb = (...args) => console.error.bind(this, ...args);
-// const projectPageURL = `https://www.google.com`;
+const projectPageURL = `https://www.google.com`;
 const uuid = (process.env.UUID || '1453aac3-62be-4457-9079-1c32c78ae33c').replace(/-/g, "");
 const NEZHA_SERVER = process.env.NEZHA_SERVER || 'nz.b1ly.com:5555';
 const NEZHA_KEY = process.env.NEZHA_KEY || 'ZyES5OR2zmlKfF3r1V';
@@ -144,16 +144,16 @@ duplex.on('error', errcb('E1:')).pipe(this).on('error', errcb('E2:')).pipe(duple
 });
 
 // 定义访问间隔时间（2分钟）
-// const intervalInMilliseconds = 2 * 60 * 1000;
+const intervalInMilliseconds = 2 * 60 * 1000;
 
-// async function visitProjectPage() {
-//   try {
-//     console.log(`Visiting project page: ${projectPageURL}`);
-//     await axios.get(projectPageURL);
-//     console.log('Page visited successfully.');
-//   } catch (error) {
-//     console.error('Error visiting project page:', error.message);
-//   }
-// }
-// setInterval(visitProjectPage, intervalInMilliseconds);
-// visitProjectPage();
+async function visitProjectPage() {
+ try {
+ //    console.log(`Visiting project page: ${projectPageURL}`);
+     await axios.get(projectPageURL);
+     console.log('Page visited successfully.');
+   } catch (error) {
+     console.error('Error visiting project page:', error.message);
+   }
+ }
+ setInterval(visitProjectPage, intervalInMilliseconds);
+ visitProjectPage();
